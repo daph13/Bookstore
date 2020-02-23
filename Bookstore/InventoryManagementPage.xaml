@@ -1,0 +1,160 @@
+﻿<Page
+    x:Class="Bookstore.InventoryManagementPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bookstore"
+    xmlns:local1="using:Bookstore.Classes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Pivot VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <PivotItem Header="Inventory">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
+                        <Button x:Name="btnAll" Width="100" Margin="10,0,10,0" Click="BtnAll_Click">All</Button>
+                        <Button x:Name="btnBook" Width="100" Margin="0,0,10,0" Click="BtnBook_Click">Books</Button>
+                        <Button x:Name="btnMagazine" Margin="0,0,10,0" Click="BtnMagazine_Click">Magazines</Button>
+                        <Button x:Name="btnStationery" Width="100" Margin="0,0,10,0" Click="BtnStationery_Click">Stationery</Button>
+                    </StackPanel>
+                    <ListBox x:Name="listInventory" Height="500" SelectionChanged="ListInventory_SelectionChanged" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="local1:Item">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{x:Bind Picture}" Height="50" Width="50" Margin="10,10,20,10"/>
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="ID: " Margin="0,0,35,0"/>
+                                            <TextBlock Text="{x:Bind ItemID}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Name: " Margin="0,0,10,0"/>
+                                            <TextBlock Text="{x:Bind ItemName}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Stock: " Margin="0,0,10,0"/>
+                                            <TextBlock Text="{x:Bind Stock}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Price: " Margin="0,0,10,0"/>
+                                            <TextBlock Text="{x:Bind Price}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Type: " Margin="0,0,10,0"/>
+                                            <TextBlock Text="{x:Bind ItemType}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                        <TextBlock Text="Employee Logged: " FontSize="20"/>
+                        <TextBlock x:Name="txtEmployeeID" FontSize="20" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="txtEmployeeName" Margin="10,0,0,0" FontSize="20"/>
+                    </StackPanel>
+                </StackPanel>
+            </PivotItem>
+            <PivotItem Header="Summary">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                        <TextBlock Text="Number of Books" FontSize="20" Margin="0,0,60,0"/>
+                        <TextBlock x:Name="txtNumBooks" Text="" Width="100" FontSize="20" FontWeight="Bold" HorizontalTextAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                        <TextBlock Text="Number of Magazines" FontSize="20" Margin="0,0,20,0"/>
+                        <TextBlock x:Name="txtNumMags" Text="" FontSize="20" Width="100" FontWeight="Bold" HorizontalTextAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                        <TextBlock Text="Number of Stationeries" FontSize="20" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="txtNumStats" Text="" Width="100" FontSize="20" FontWeight="Bold" HorizontalTextAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                        <TextBlock Text="Total Stock" FontSize="20" Margin="0,0,120,0"/>
+                        <TextBlock x:Name="txtTotalStock" Text="" Width="100" FontSize="20" FontWeight="Bold" HorizontalTextAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TextBlock x:Name="txtItemType" Text="Book" Margin="20,10,0,0" FontSize="20" FontWeight="Medium"/>
+            <StackPanel Orientation="Horizontal">
+                <Border Margin="50,15,10,0" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                    <Image x:Name="imgItem" VerticalAlignment="Center" Height="200" Width="250"/>
+                </Border>
+                <Button x:Name="btnChangeImg" Content="Change Image" VerticalAlignment="Top" Margin="0,20,0,0" Click="BtnChangeImg_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="ID" FontSize="20" FontWeight="Black" Margin="0,0,101,0"/>
+                <TextBox x:Name="txtID" Width="100" IsReadOnly="True" Background="LightGray"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Name" FontSize="20" FontWeight="Black" Margin="0,0,66,0"/>
+                <TextBox x:Name="txtName" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Description" FontSize="20" FontWeight="Black" Margin="0,0,10,0"/>
+                <TextBox x:Name="txtDesc" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Stock" FontSize="20" FontWeight="Black" Margin="0,0,69,0"/>
+                <TextBox x:Name="txtStock" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Price" FontSize="20" FontWeight="Black" Margin="0,0,75,0"/>
+                <TextBox x:Name="txtPrice" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock x:Name="lblAuPuCol" Text="Author" FontSize="20" FontWeight="Black" Margin="0,0,54,0"/>
+                <TextBox x:Name="txtAuPuCol" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock x:Name="lblGenre" Text="Genre" FontSize="20" FontWeight="Black" Margin="0,0,65,0"/>
+                <TextBox x:Name="txtGenre" Width="200"/>
+                <Button x:Name="btnAdd" Height="30" Margin="20,0,0,0" Content="Add New Item" Click="BtnAdd_Click"/>
+            </StackPanel>
+            <!--<ComboBox x:Name="comboGenre">
+                <ComboBoxItem Content="Adventure"/>
+                <ComboBoxItem Content="Art"/>
+                <ComboBoxItem Content="Biography"/>
+                <ComboBoxItem Content="Children's"/>
+                <ComboBoxItem Content="Cookbook"/>
+                <ComboBoxItem Content="Drama"/>
+                <ComboBoxItem Content="Dictionary"/>
+                <ComboBoxItem Content="Fantasy"/>
+                <ComboBoxItem Content="Guide"/>
+                <ComboBoxItem Content="History"/>
+                <ComboBoxItem Content="Horror"/>
+                <ComboBoxItem Content="Mystery"/>
+                <ComboBoxItem Content="Poetry"/>
+                <ComboBoxItem Content="Romance"/>
+                <ComboBoxItem Content="Science"/>
+                <ComboBoxItem Content="Travel"/>
+            </ComboBox>-->
+            <StackPanel Height="110" VerticalAlignment="Bottom">
+                <CommandBar Margin="-15,45,0,0" VerticalAlignment="Bottom">
+                    <AppBarButton x:Name="btnViewDeleted" Icon="ViewAll" Label="View Removed Items" Click="BtnViewDeleted_Click"/>
+                    <AppBarButton Icon="Add" Label="Add">
+                        <AppBarButton.Flyout>
+                            <MenuFlyout Placement="Top">
+                                <MenuFlyoutItem x:Name="btnAddBook" Text="Book" Click="BtnAddBook_Click"/>
+                                <MenuFlyoutItem x:Name="btnAddMagazine" Text="Magazine" Click="BtnAddMagazine_Click"/>
+                                <MenuFlyoutItem x:Name="btnAddStationery" Text="Stationery" Click="BtnAddStationery_Click"/>
+                            </MenuFlyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                    <AppBarButton x:Name="btnEdit" Icon="Edit" Label="Update" Click="BtnEdit_Click"/>
+                    <AppBarButton x:Name="btnDelete" Icon="Delete" Label="Delete" Click="BtnDelete_Click"/>
+                    <AppBarButton x:Name="btnClear" Icon="Clear" Label="Clear Fields" Click="BtnClear_Click"/>
+                    <AppBarButton x:Name="btnBack" Icon="Back" Label="Back" Click="BtnBack_Click"/>
+                </CommandBar>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

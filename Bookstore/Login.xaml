@@ -1,0 +1,25 @@
+﻿<ContentDialog
+    x:Class="Bookstore.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bookstore"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Login"
+    PrimaryButtonText="OK"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick" Loaded="ContentDialog_Loaded">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20" Height="135" Width="250">
+            <TextBlock Text="Enter your name" Margin="20,0,0,0"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="txtFirstName" PlaceholderText="First Name" Margin="10" Width="100"/>
+                <TextBox x:Name="txtLastName" PlaceholderText="Last Name" Margin="10" Width="100"/>
+            </StackPanel>
+            <TextBlock Text="Enter your password" Margin="20,0,0,0"/>
+            <PasswordBox x:Name="passwordBox" PlaceholderText="Password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Width="210"/>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

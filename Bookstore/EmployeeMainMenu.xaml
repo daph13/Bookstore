@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="Bookstore.EmployeeMainMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bookstore"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+    <Page.Resources>
+        <SolidColorBrush x:Key="DodgerBlue" Color="#32a5e0"/>
+    </Page.Resources>
+    <Grid Background="#47688b">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="btnSale" Grid.Row="1" Grid.Column="1" Tapped="BtnSale_Tapped" PointerEntered="BtnSale_PointerEntered" PointerExited="BtnSale_PointerExited" >
+            <Image  HorizontalAlignment="Stretch" Height="200" VerticalAlignment="Stretch" Source="./Images/till.png" Margin="20,10,20,0"/>
+            <TextBlock Text="Make a Sale" FontSize="20" FontFamily="Cambria" Foreground="White" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel x:Name="btnAdmin" Grid.Row="3" Grid.Column="1" Tapped="BtnAdmin_Tapped" PointerEntered="BtnAdmin_PointerEntered" PointerExited="BtnAdmin_PointerExited">
+            <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="./Images/employee.png" Margin="20,0,20,0"/>
+            <TextBlock Text="Manage Employees" FontSize="20" FontFamily="Cambria" Foreground="White" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel x:Name="btnStock" Grid.Row="1" Grid.Column="3" Tapped="BtnStock_Tapped" PointerEntered="BtnStock_PointerEntered" PointerExited="BtnStock_PointerExited" >
+            <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="./Images/stock.png" Margin="20,0,20,0"/>
+            <TextBlock Text="Manage Inventory" FontSize="20" FontFamily="Cambria" Foreground="White" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel x:Name="btnSalesStats" Grid.Row="3" Grid.Column="3" Tapped="BtnSalesStats_Tapped" PointerEntered="BtnSalesStats_PointerEntered" PointerExited="BtnSalesStats_PointerExited">
+            <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="./Images/sales2.png" Margin="20,0,20,0"/>
+            <TextBlock Text="View Sales" FontSize="20" FontFamily="Cambria" Foreground="White" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10,20,0,0">
+            <TextBlock Text="Employee Logged: " FontSize="20" FontFamily="Cambria" Foreground="White"/>
+            <TextBlock x:Name="txtEmployeeID" FontSize="20" FontFamily="Cambria" Foreground="White" Margin="10,0,0,0"/>
+            <TextBlock x:Name="txtEmployeeName" Margin="10,0,0,0" FontSize="20" FontFamily="Cambria" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="4">
+            <Button x:Name="btnBack" Margin="80,20,0,0" Width="80" Click="BtnBack_Click">
+                <TextBlock FontSize="20" FontFamily="Segoe MDL2 Assets" Text="&#xF0B0;"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

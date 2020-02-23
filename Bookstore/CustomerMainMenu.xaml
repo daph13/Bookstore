@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="Bookstore.CustomerMainMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bookstore"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <SolidColorBrush x:Key="DodgerBlue" Color="#32a5e0"/>
+        <SolidColorBrush x:Key="LightSeaGreen" Color="#1c95a0"/>
+    </Page.Resources>
+    <Grid Background="#47688b">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="btnOrder" Grid.Row="1" Grid.Column="1" Background="#1c95a0" PointerEntered="BtnOrder_PointerEntered" PointerExited="BtnOrder_PointerExited" Tapped="BtnOrder_Tapped">
+            <TextBlock TextAlignment="Center" Foreground="White" Text="Make an Order" FontSize="50" FontWeight="Bold" FontFamily="Cambria" Margin="0,125,0,0"/>
+        </StackPanel>
+        <StackPanel x:Name="btnChange" Grid.Row="1" Grid.Column="3" Background="#1c95a0" PointerEntered="BtnChange_PointerEntered" PointerExited="BtnChange_PointerExited" Tapped="BtnChange_Tapped">
+            <TextBlock TextAlignment="Center" Foreground="White" Text="Change Order" FontSize="50" FontWeight="Bold" FontFamily="Cambria" Margin="0,125,0,0"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="4">
+            <Button x:Name="btnBack" Margin="20,110,0,0" Width="80" Click="BtnBack_Click">
+                <TextBlock FontSize="20" FontFamily="Segoe MDL2 Assets" Text="&#xF0B0;"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

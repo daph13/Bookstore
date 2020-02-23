@@ -1,0 +1,39 @@
+﻿<ContentDialog
+    x:Class="Bookstore.AddCustomerDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bookstore"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Customer Details"
+    PrimaryButtonText="OK"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    Loaded="ContentDialog_Loaded">
+    <Grid Height="360" Width="400">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="First Name" FontSize="20" Margin="10"/>
+                <TextBox x:Name="txtFirstName" PlaceholderText="Enter First Name" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Last Name" FontSize="20" Margin="10"/>
+                <TextBox x:Name="txtLastName" PlaceholderText="Enter Last Name" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Email" FontSize="20" Margin="10,10,56,10"/>
+                <TextBox x:Name="txtEmail" PlaceholderText="Enter Email" FontSize="20" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Phone" FontSize="20" Margin="10,10,47,10"/>
+                <TextBox x:Name="txtPhone" PlaceholderText="Enter Phone Number" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Code" FontSize="20" Margin="10,10,57,10"/>
+                <PasswordBox x:Name="txtCode" PlaceholderText="Enter a Code" FontSize="20" Width="150"/>
+            </StackPanel>
+            <TextBlock Text="*Enter a code in case you want to update your order" TextAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

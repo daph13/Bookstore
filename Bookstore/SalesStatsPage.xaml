@@ -1,0 +1,171 @@
+﻿<Page
+    x:Class="Bookstore.SalesStatsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bookstore"
+    xmlns:local1="using:Bookstore.Classes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock Text="Sales" FontSize="50" FontWeight="Medium" Margin="30,10,0,0"/>
+            <ComboBox x:Name="comboDates" Width="150" Margin="30,0,0,0" SelectionChanged="ComboDates_SelectionChanged">
+                <ComboBoxItem x:Name="All" Content="All" />
+            </ComboBox>
+            <ListBox x:Name="listSales" ItemsSource="{Binding}" Margin="30,10,0,0" Height="480" SelectionChanged="ListSales_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="local1:Sale">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/receipt.png" Height="70" Width="60" />
+                                <StackPanel>
+                                    <TextBlock Text="ID" FontWeight="Medium"/>
+                                    <TextBlock Text="Items" FontWeight="Medium"/>
+                                    <TextBlock Text="Total" FontWeight="Medium"/>
+                                    <TextBlock Text="Date" FontWeight="Medium"/>
+                                    <TextBlock Text="Processed By" FontWeight="Medium"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="{x:Bind SaleID}" Margin="10,0,0,0"/>
+                                <TextBlock Text="{x:Bind Order.OrderItems.Count}" Margin="10,0,0,0"/>
+                                <TextBlock Text="{x:Bind TotalPriceString()}" Margin="10,0,0,0"/>
+                                <TextBlock Text="{x:Bind DateString()}" Margin="10,0,0,0"/>
+                                <TextBlock Text="{x:Bind SaleBy.EmployeeName()}" Margin="10,0,0,0"/>
+                            </StackPanel>
+                            </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                <TextBlock Text="Employee Logged: " FontSize="20"/>
+                <TextBlock x:Name="txtEmployeeID" FontSize="20" Margin="10,0,0,0"/>
+                <TextBlock x:Name="txtEmployeeName" Margin="10,0,0,0" FontSize="20"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Pivot VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <PivotItem Header="Sales Summary">
+                    <StackPanel>
+                        <TextBlock x:Name="txtDate" Text="All Dates" FontSize="30" FontWeight="Medium"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Number of Sales" FontSize="20" Margin="0,20,0,0"/>
+                            <TextBlock x:Name="txtNumSales" Margin="30,20,0,0" Foreground="Black" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Total of Sales" FontSize="20" Margin="0,20,0,0"/>
+                            <TextBlock x:Name="txtTotalPriceSales" Margin="60,20,0,0" Foreground="Black" />
+                        </StackPanel>
+                        <TextBlock Text="Sale Details" Margin="0,20,0,0" FontSize="30" FontWeight="Medium"/>
+                        <ListBox x:Name="listSaleItem" ItemsSource="{Binding}" Height="330" Background="Transparent">
+                            <!--<TextBlock x:Name="txtNoSale" Text="No Sale Selected" FontSize="30" FontWeight="Medium" Margin="130,150,0,0" />-->
+                            <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="local1:Sale">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Sale ID" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind SaleID}" Margin="50,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Date of Sale" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind DateString()}" Margin="20,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Customer" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind Order.Customer.CustomerName()}" Margin="35,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Items Sold" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind SaleItemsString()}" Margin="28,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Total Items" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind Order.OrderItems.Count}" Margin="25,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Total Price" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind TotalPriceString()}"  Margin="30,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Amount Paid" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind PaidString()}" Margin="15,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Change" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind ChangeString()}" Margin="48,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Sale By" FontWeight="Medium"/>
+                                            <TextBlock Text="{x:Bind SaleBy.EmployeeName()}" Margin="50,0,0,0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <StackPanel>
+                            <Button x:Name="btnBack" Width="80" Margin="400,5,0,0" Click="BtnBack_Click">
+                                <TextBlock FontSize="20" FontFamily="Segoe MDL2 Assets" Text="&#xF0B0;"/>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem Header="Items Sold">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Items Sold on: " FontSize="30" Margin="0,10,10,0"/>
+                            <TextBlock x:Name="txtItemsDate" Text="All Dates" FontSize="30" Margin="0,10,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Total Items: " FontSize="20" Margin="0,10,10,0"/>
+                            <TextBlock x:Name="txtTotalItems" FontSize="20" Margin="0,10,0,0"/>
+                        </StackPanel>
+                        <ListBox x:Name="listSoldItems" ItemsSource="{Binding}" Height="200" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="local1:Item">
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0" Width="400">
+                                                <TextBlock Text="{x:Bind ItemName}" FontSize="20"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="{x:Bind NumInEachOrder}" FontSize="20"/>
+                                            </StackPanel>
+                                        </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Text="Best Sellers" FontSize="30"/>
+                        <StackPanel Margin="10,10,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="78" Width="79" Source="/Images/gold.png"/>
+                                <TextBlock x:Name="txtFirstPlace" Text="None" VerticalAlignment="Center" FontSize="20" Margin="30,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Image Height="78" Width="79" Source="/Images/silver.png"/>
+                                <TextBlock x:Name="txtSecondPlace" Text="None" VerticalAlignment="Center" FontSize="20" Margin="30,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Image Height="78" Width="79" Source="/Images/bronze.png"/>
+                                <TextBlock x:Name="txtThirdPlace" Text="None" VerticalAlignment="Center" FontSize="20" Margin="30,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>    
+                </PivotItem>
+            </Pivot>
+        </StackPanel>
+    </Grid>
+</Page>

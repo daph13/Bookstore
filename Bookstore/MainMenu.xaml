@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="Bookstore.MainMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bookstore"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <SolidColorBrush x:Key="DodgerBlue" Color="#32a5e0" />
+        <SolidColorBrush x:Key="LightSeaGreen" Color="#1c95a0"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="./Images/background.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="5" VerticalAlignment="Center">
+            <TextBlock TextAlignment="Center" Text="Welcome to BookStore" FontSize="70" FontWeight="Bold" FontFamily="Cambria" Foreground="White"/>
+        </StackPanel>
+        <StackPanel x:Name="orderBtn" Grid.Row="1" Grid.Column="1" Background="#1c95a0" PointerEntered="OrderBtn_PointerEntered" PointerExited="OrderBtn_PointerExited" Height="504" Tapped="OrderBtn_Tapped">
+            <TextBlock TextAlignment="Center" Text="Customer" FontSize="50" FontWeight="Bold" FontFamily="Cambria" Foreground="White" Margin="0,125,0,0"/>
+        </StackPanel>
+        <StackPanel x:Name="staffLoginBtn" Grid.Row="1" Grid.Column="3" Background="#1c95a0" PointerEntered="StaffLoginBtn_PointerEntered" PointerExited="StaffLoginBtn_PointerExited" Tapped="StaffLoginBtn_Tapped">
+            <TextBlock TextAlignment="Center" Text="Staff Login" FontSize="50" FontWeight="Bold" FontFamily="Cambria" Foreground="White" Margin="0,125,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
